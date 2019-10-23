@@ -1,0 +1,8 @@
+[Diagram]
+Title=Default title
+Database=D:\Projects\hse\boston-crimes-hse\data\crimes-in-boston\crime_xls.xls
+
+[Dataset]
+MLClassGenerator=TMLGenDataset
+successors=0
+

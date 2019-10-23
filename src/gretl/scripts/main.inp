@@ -1,0 +1,30 @@
+# Числовой анализ
+summary REPORTING_AREA
+summary HOUR
+
+
+# Построение Box-Whiskers диаграмм 
+boxplot REPORTING_AREA HOUR --factorized
+boxplot REPORTING_AREA DAY_OF_WEEK --factorized
+boxplot REPORTING_AREA OCCURRED_ON_DATE --factorized
+boxplot REPORTING_AREA MONTH --factorized
+boxplot REPORTING_AREA STREET --factorized
+boxplot REPORTING_AREA DISTRICT --factorized
+boxplot REPORTING_AREA YEAR --factorized
+
+# Построение ScatterPlot 
+gnuplot DISTRICT REPORTING_AREA
+
+# Коэф. кореляции Спирмена
+corr REPORTING_AREA HOUR --spearman
+corr REPORTING_AREA DAY_OF_WEEK --spearman
+
+# Коэф. корелляции Кендала
+corr REPORTING_AREA HOUR --kendall
+corr REPORTING_AREA DAY_OF_WEEK --kendall
+
+
+# Коэф. корелляции Пирсона
+corr REPORTING_AREA HOUR
+corr REPORTING_AREA DAY_OF_WEEK
+
