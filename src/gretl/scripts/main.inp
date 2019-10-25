@@ -1,30 +1,67 @@
-# Числовой анализ
-summary REPORTING_AREA
-summary HOUR
+# Построение гистограм
+freq REPORTING_AREA --min=0 --binwidth=60 --plot=display
+freq DAY_OF_MONTH --min=0.989 --binwidth=1 --plot=display
+freq HOUR --nbins=23 --plot=display
+freq Lat --min=42.232 --binwidth=0.001 --plot=display
+freq Long --min=-71.179 --binwidth=0.001 --plot=display
+freq Location
 
+# Числовой анализ
+summary REPORTING_AREA 
+summary HOUR
+summary Lat
+summary Long
+summary Location 
 
 # Построение Box-Whiskers диаграмм 
-boxplot REPORTING_AREA HOUR --factorized
-boxplot REPORTING_AREA DAY_OF_WEEK --factorized
+# количественная зависимая - качественная независимая
+# REPORTING_AREA зависимая
+boxplot REPORTING_AREA OFFENSE_CODE --factorized
+boxplot REPORTING_AREA OFFENSE_CODE_GROUP --factorized
+boxplot REPORTING_AREA DISTRICT --factorized
+boxplot REPORTING_AREA SHOOTING --factorized
 boxplot REPORTING_AREA OCCURRED_ON_DATE --factorized
 boxplot REPORTING_AREA MONTH --factorized
+boxplot REPORTING_AREA DAY_OF_WEEK --factorized
 boxplot REPORTING_AREA STREET --factorized
-boxplot REPORTING_AREA DISTRICT --factorized
-boxplot REPORTING_AREA YEAR --factorized
 
 # Построение ScatterPlot 
-gnuplot DISTRICT REPORTING_AREA
+gnuplot REPORTING_AREA HOUR
+gnuplot REPORTING_AREA DAY_OF_MONTH
+gnuplot REPORTING_AREA Location
+gnuplot REPORTING_AREA Lat
+gnuplot REPORTING_AREA Long
 
 # Коэф. кореляции Спирмена
 corr REPORTING_AREA HOUR --spearman
-corr REPORTING_AREA DAY_OF_WEEK --spearman
+corr REPORTING_AREA DAY_OF_MONTH --spearman
+corr REPORTING_AREA Location --spearman
+corr REPORTING_AREA Lat --spearman
+corr REPORTING_AREA Long --spearman
 
 # Коэф. корелляции Кендала
 corr REPORTING_AREA HOUR --kendall
-corr REPORTING_AREA DAY_OF_WEEK --kendall
-
+corr REPORTING_AREA DAY_OF_MONTH --kendall
+corr REPORTING_AREA Location --kendall
+corr REPORTING_AREA Lat --kendall
+corr REPORTING_AREA Long --kendall
 
 # Коэф. корелляции Пирсона
 corr REPORTING_AREA HOUR
-corr REPORTING_AREA DAY_OF_WEEK
+corr REPORTING_AREA DAY_OF_MONTH
+corr REPORTING_AREA Location
+corr REPORTING_AREA Lat
+corr REPORTING_AREA Long
 
+# Построение кросс-табуляции и рассчет Хи-квадрат
+xtab DISTRICT OFFENSE_CODE_GROUP
+xtab STREET OFFENSE_CODE_GROUP
+xtab DAY_OF_WEEK OFFENSE_CODE_GROUP
+
+# Построение модели для регрессионного анализа
+ols REPORTING_AREA 0 HOUR DAY_OF_MONTH
+
+# Построение VIF, BKW, leverage для данной модели
+vif
+bkw
+leverage

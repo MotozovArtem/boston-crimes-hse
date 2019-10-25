@@ -1,6 +1,6 @@
 [Diagram]
 Title=Default title
-Database=D:\Projects\hse\boston-crimes-hse\data\crimes-in-boston\crime_xls.xls
+Database=D:\Projects\hse\boston-crimes-hse\data\crimes-in-boston\crimes_boston_2018.xls
 
 [Dataset]
 MLClassGenerator=TMLGenDataset
