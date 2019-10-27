@@ -2,4 +2,4 @@
 env
 
 # Gretl session file
-.gdt~
+*.gdt~
