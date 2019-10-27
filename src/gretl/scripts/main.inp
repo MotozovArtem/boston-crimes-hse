@@ -65,3 +65,14 @@ ols REPORTING_AREA 0 HOUR DAY_OF_MONTH
 vif
 bkw
 leverage
+
+# Добавление новой переменной для оптимизации модели
+sqrt_HOUR = sqrt(HOUR)
+
+# Построение оптимизированной модели для регрессионного анализа
+ols REPORTING_AREA 0 sqrt_HOUR DAY_OF_MONTH
+
+# Построение VIF, BKW, leverage для оптимизированной модели
+vif
+bkw
+leverage
